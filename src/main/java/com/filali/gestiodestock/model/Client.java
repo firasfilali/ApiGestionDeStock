@@ -1,15 +1,13 @@
 package com.filali.gestiodestock.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -23,8 +21,8 @@ public class Client extends AbstarctEntity {
     private Adresse adresse;
     @Column(name = "photo")
     private String photo;
-    @Column(name = "mail")
-    private String mail;
+    @Column(name = "email")
+    private String email;
     @Column(name = "numTel")
     private String numTel;
     @OneToMany(mappedBy = "client")

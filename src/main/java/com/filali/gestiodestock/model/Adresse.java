@@ -2,13 +2,11 @@ package com.filali.gestiodestock.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
