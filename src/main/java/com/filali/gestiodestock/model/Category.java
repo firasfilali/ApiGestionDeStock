@@ -20,6 +20,8 @@ public class Category extends AbstarctEntity {
     private String code;
     @Column(name = "designation")
     private String designation;
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
     @OneToMany(mappedBy = "category")
     private List<Article> articles;
 }

@@ -13,6 +13,8 @@ import lombok.*;
 public class Roles extends AbstarctEntity{
     @Column(name = "rolename")
     private String roleName;
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
     @ManyToOne
     @JoinColumn(name = "idutilisateur")
     private Utilisateur utilisateur;

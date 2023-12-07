@@ -21,6 +21,8 @@ public class LigneCommandeFournisseur extends AbstarctEntity {
     @ManyToOne
     @JoinColumn(name = "idcommandefournisseur")
     private CommandeFournisseur commandeFournisseur;
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
 
     @Column(name = "quantite")
     private BigDecimal quantite;

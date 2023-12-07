@@ -19,6 +19,8 @@ public class LigneCommandeClient extends AbstarctEntity {
     @ManyToOne
     @JoinColumn(name = "idcommandeclient")
     private CommandeClient commandeClient;
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
     @Column(name = "quantite")
     private BigDecimal quantite;
     @Column(name = "prixunitaire")

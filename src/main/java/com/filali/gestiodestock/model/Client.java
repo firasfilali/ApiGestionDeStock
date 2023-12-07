@@ -19,6 +19,8 @@ public class Client extends AbstarctEntity {
     private String prenom;
     @Embedded
     private Adresse adresse;
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
     @Column(name = "photo")
     private String photo;
     @Column(name = "email")

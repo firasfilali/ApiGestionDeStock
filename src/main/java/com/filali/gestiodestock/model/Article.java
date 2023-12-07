@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -19,6 +20,8 @@ public class Article extends AbstarctEntity {
     private String designation;
     @Column(name = "prixunitaireht")
     private BigDecimal prixUnitaireHt;
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
     @Column(name = "tauxtva")
     private BigDecimal tauxTva;
     @Column(name = "prixunitairettc")
@@ -28,4 +31,13 @@ public class Article extends AbstarctEntity {
     @ManyToOne
     @JoinColumn(name = "idcategory")
     private Category category;
+    @OneToMany(mappedBy = "article")
+    private List<LigneVente> ligneVentes;
+    @OneToMany(mappedBy = "article")
+    private List<LigneCommandeClient> ligneCommandeClients;
+    @OneToMany(mappedBy = "article")
+    private List<LigneCommandeFournisseur> ligneCommandeFournisseurs;
+    @OneToMany(mappedBy = "article")
+    private List<MvtStk> mvtStks;
+
 }

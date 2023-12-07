@@ -16,8 +16,11 @@ import java.util.List;
 public class CommandeClient extends AbstarctEntity {
     @Column(name = "code")
     private String code;
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
     @Column(name = "dateCommande")
     private Instant dateCommande;
+
     @ManyToOne
     @JoinColumn(name = "idclient")
     private Client client;
