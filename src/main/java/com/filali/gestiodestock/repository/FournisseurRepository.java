@@ -3,5 +3,8 @@ package com.filali.gestiodestock.repository;
 import com.filali.gestiodestock.model.Fournisseur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FournisseurRepository extends JpaRepository<Integer, Fournisseur> {
+import java.util.Optional;
+
+public interface FournisseurRepository extends JpaRepository<Fournisseur,Integer> {
+    Optional<Fournisseur> findFournisseurByNom(String fournisseurName);
 }
