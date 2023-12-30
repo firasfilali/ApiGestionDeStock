@@ -10,9 +10,7 @@ public interface CategoryService {
 
     CategoryDto findById(Integer id);
 
-    CategoryDto findByCodeCategory(String codeCategory);
-
-
+    CategoryDto findByCode(String codeCategory);
 
     List<CategoryDto> findAll();
 

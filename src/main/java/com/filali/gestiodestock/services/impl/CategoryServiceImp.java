@@ -25,6 +25,7 @@ import java.util.stream.Collectors;
 public class CategoryServiceImp implements CategoryService {
 
     private CategoryRepository categoryRepository;
+
     @Autowired
     public CategoryServiceImp(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
@@ -34,7 +35,7 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public CategoryDto save(CategoryDto categoryDto) {
         List<String> errors = CategoryValidator.validate(categoryDto);
-        if(!errors.isEmpty()){
+        if (!errors.isEmpty()) {
             log.error("Category is not valid {}", categoryDto);
             throw new InvalidEntityException("Category n'est pas valide", ErrorCodes.CATEGORY_NOT_VALID, errors);
         }
@@ -44,27 +45,26 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public CategoryDto findById(Integer id) {
-        if(id == null){
+        if (id == null) {
             log.error("Category ID is null");
             return null;
         }
         Optional<Category> category = categoryRepository.findById(id);
         return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() ->
-                new EntityNotFoundException("Aucun category avec l'ID = "+ id + "n'ete trouver dans BDD",
+                new EntityNotFoundException("Aucun category avec l'ID = " + id + "n'ete trouver dans BDD",
                         ErrorCodes.CATEGORY_NOT_FOUND));
     }
 
 
-
     @Override
-    public CategoryDto findByCodeCategory(String codeCategory) {
-        if(!StringUtils.hasLength(codeCategory)){
+    public CategoryDto findByCode(String codeCategory) {
+        if (!StringUtils.hasLength(codeCategory)) {
             log.error("Category CODE is null");
             return null;
         }
         Optional<Category> category = categoryRepository.findCategoryByCode(codeCategory);
         return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() ->
-                new EntityNotFoundException("Aucun category avec le CODE = "+ codeCategory + "n'ete trouver dans BDD",
+                new EntityNotFoundException("Aucun category avec le CODE = " + codeCategory + "n'ete trouver dans BDD",
                         ErrorCodes.CATEGORY_NOT_FOUND));
     }
 
@@ -77,7 +77,7 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public void delete(Integer id) {
-        if(id == null){
+        if (id == null) {
             log.error("Category CODE is null");
             return;
         }
