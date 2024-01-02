@@ -13,7 +13,6 @@ public interface EntrepriseService {
     EntrepriseDto findByEntrepriseName(String nom);
 
 
-
     List<EntrepriseDto> findAll();
 
     void delete(Integer id);
