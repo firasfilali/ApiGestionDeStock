@@ -18,6 +18,7 @@ public class AdresseDto {
     private String codePostale;
 
     private String pays;
+
     //mapper de l'entity vers DTO
     public static AdresseDto fromEntity(Adresse adresse){
         if(adresse == null){

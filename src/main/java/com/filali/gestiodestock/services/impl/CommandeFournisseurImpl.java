@@ -1,8 +1,9 @@
 package com.filali.gestiodestock.services.impl;
 
-import com.filali.gestiodestock.dto.CommandeClientDto;
+
+
 import com.filali.gestiodestock.dto.CommandeFournisseurDto;
-import com.filali.gestiodestock.dto.LigneCommandeClientDto;
+
 import com.filali.gestiodestock.dto.LigneCommandeFournisseurDto;
 import com.filali.gestiodestock.exception.EntityNotFoundException;
 import com.filali.gestiodestock.exception.ErrorCodes;
@@ -54,7 +55,7 @@ public class CommandeFournisseurImpl implements CommandeFournisseurService {
         if (fournisseur.isEmpty()){
             log.warn("Fournisseur with ID {} was not found in DB ", dto.getFournisseur().getId());
             throw new EntityNotFoundException("Aucun fournisseur avec l'ID" + dto.getFournisseur().getId() +
-                    "n'a ete trouve dans BD ", ErrorCodes.COMMANDE_FOURNISSEUR_NOT_FOUND);
+                    "n'a ete trouve dans BD ", ErrorCodes.FOURNISSEUR_NOT_FOUND);
         }
 
         List<String> articlesErrors = new ArrayList<>();
@@ -98,7 +99,20 @@ public class CommandeFournisseurImpl implements CommandeFournisseurService {
         return commandeFournisseurRepository.findById(id)
                 .map(CommandeFournisseurDto::fromEntity)
                 .orElseThrow(() -> new EntityNotFoundException(
-                        "Aucun commande fournisseur n'a ete trouve avec l'ID" + id, ErrorCodes.COMMANDE_CLIENT_NOT_FOUND
+                        "Aucun commande fournisseur n'a ete trouve avec l'ID" + id, ErrorCodes.COMMANDE_FOURNISSEUR_NOT_FOUND
+                ));
+    }
+
+    @Override
+    public CommandeFournisseurDto findCommandeFournisseurByCode(String code) {
+        if (code == null) {
+            log.error("Commande fournisseur CODE is NULL");
+            return null;
+        }
+        return commandeFournisseurRepository.findCommandeFournisseurByCode(code)
+                .map(CommandeFournisseurDto::fromEntity)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Aucun commande fournisseur n'a ete trouve avec le CODE" + code, ErrorCodes.COMMANDE_FOURNISSEUR_NOT_FOUND
                 ));
     }
 
