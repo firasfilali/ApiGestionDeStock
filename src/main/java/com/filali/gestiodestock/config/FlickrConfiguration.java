@@ -3,7 +3,9 @@ package com.filali.gestiodestock.config;
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.REST;
+import com.flickr4java.flickr.RequestContext;
 import com.flickr4java.flickr.auth.Auth;
+import com.flickr4java.flickr.auth.Permission;
 import com.github.scribejava.apis.FlickrApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuth1AccessToken;
@@ -23,8 +25,31 @@ public class FlickrConfiguration {
     private String apiKey;
     @Value("${flickr.api.secret}")
     private String apiSecret;
-
+    @Value("${flickr.app.key}")
+    private String appKey;
+    @Value("${flickr.app.secret}")
+    private String appSecret;
     @Bean
+    public Flickr getFlickr(){
+        Flickr flickr = new Flickr(apiKey, apiSecret, new REST());
+
+        Auth auth = new Auth();
+
+        auth.setPermission(Permission.DELETE);
+
+        auth.setToken(appKey);
+        auth.setTokenSecret(appSecret);
+
+        RequestContext requestContext = RequestContext.getRequestContext();
+        requestContext.setAuth(auth);
+
+        flickr.setAuth(auth);
+
+        return flickr;
+
+    }
+
+  /*  @Bean
     public Flickr getFlickr() throws IOException, ExecutionException, InterruptedException, FlickrException {
         Flickr flickr = new Flickr(apiKey, apiSecret, new REST());
 
@@ -56,5 +81,5 @@ public class FlickrConfiguration {
 
 
         return flickr;
-    }
+    }*/
 }
