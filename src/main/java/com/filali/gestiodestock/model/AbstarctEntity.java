@@ -21,13 +21,19 @@ public class AbstarctEntity implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
-    @CreatedDate
-    @Column(name = "creationDate", nullable = false)
-    @JsonIgnore
+    //@CreatedDate
+    @Column(name = "creationDate")
     private Instant creationDate;
 
-    @LastModifiedDate
+    //@LastModifiedDate
     @Column(name = "lastModifiedDate")
-    @JsonIgnore
     private Instant lastUpdateDate;
+    @PrePersist
+    void prePersist(){
+        creationDate = Instant.now();
+    }
+    @PreUpdate
+    void preUpdate(){
+        lastUpdateDate = Instant.now();
+    }
 }

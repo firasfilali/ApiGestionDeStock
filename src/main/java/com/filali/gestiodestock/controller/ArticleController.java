@@ -3,12 +3,14 @@ package com.filali.gestiodestock.controller;
 import com.filali.gestiodestock.controller.api.ArticleApi;
 import com.filali.gestiodestock.dto.ArticleDto;
 import com.filali.gestiodestock.services.ArticleService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@Tag(name = "Article")
 public class ArticleController implements ArticleApi {
 
     private ArticleService articleService;

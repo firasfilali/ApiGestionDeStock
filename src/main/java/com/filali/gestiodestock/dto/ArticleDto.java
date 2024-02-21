@@ -25,7 +25,7 @@ public class ArticleDto {
     private BigDecimal prixUnitaireTtc;
     private String photo;
     private Integer idEntreprise;
-    @JsonIgnore
+
     private CategoryDto category;
 
     public static ArticleDto fromEntity(Article article){
