@@ -3,10 +3,12 @@ package com.filali.gestiodestock.controller;
 import com.filali.gestiodestock.controller.api.ClientApi;
 import com.filali.gestiodestock.dto.ClientDto;
 import com.filali.gestiodestock.services.ClientService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+@Tag(name = "Client")
 @RestController
 public class ClientController implements ClientApi {
 

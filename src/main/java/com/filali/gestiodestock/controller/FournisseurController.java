@@ -3,10 +3,12 @@ package com.filali.gestiodestock.controller;
 import com.filali.gestiodestock.controller.api.FournisseurApi;
 import com.filali.gestiodestock.dto.FournisseurDto;
 import com.filali.gestiodestock.services.FournisseurService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @RestController
+@Tag(name = "Fournisseur")
 public class FournisseurController implements FournisseurApi {
 
     private FournisseurService fournisseurService;

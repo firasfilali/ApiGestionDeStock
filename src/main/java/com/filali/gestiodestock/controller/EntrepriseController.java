@@ -3,11 +3,13 @@ package com.filali.gestiodestock.controller;
 import com.filali.gestiodestock.controller.api.EntrepriseApi;
 import com.filali.gestiodestock.dto.EntrepriseDto;
 import com.filali.gestiodestock.services.EntrepriseService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 @RestController
+@Tag(name = "Entreprise")
 public class EntrepriseController implements EntrepriseApi {
 
     private EntrepriseService entrepriseService;

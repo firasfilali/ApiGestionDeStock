@@ -78,7 +78,7 @@ public interface ArticleApi {
     List<ArticleDto> findAll();
 
     @Operation(
-            description = "Cette methode permet de chercher et renvoyer la listes des articles qui existent",
+            description = "Cette methode permet de supprimer un article par ID",
             summary = "Supprimer un article",
             responses = {
                     @ApiResponse(

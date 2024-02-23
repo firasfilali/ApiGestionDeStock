@@ -3,12 +3,14 @@ package com.filali.gestiodestock.controller;
 import com.filali.gestiodestock.controller.api.CategoryApi;
 import com.filali.gestiodestock.dto.CategoryDto;
 import com.filali.gestiodestock.services.CategoryService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@Tag(name = "Category")
 public class CategoryController implements CategoryApi {
 
     private CategoryService categoryService;
