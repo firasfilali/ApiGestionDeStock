@@ -60,7 +60,7 @@ public interface CategoryApi {
                     )
             }
     )
-    @GetMapping(value = APP_ROOT + "/categories/{codeCategory}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/categories/by-code/{codeCategory}", produces = MediaType.APPLICATION_JSON_VALUE)
     CategoryDto findByCodeCategory(@PathVariable("codeCategory") String codeCategory);
 
     @Operation(
@@ -76,6 +76,19 @@ public interface CategoryApi {
     )
     @GetMapping(value = APP_ROOT + "/categories/all", produces = MediaType.APPLICATION_JSON_VALUE)
     List<CategoryDto> findAll();
+    @Operation(
+            description = "Cette methode permet de chercher et renvoyer la listes des categories filtrer par Entreprise qui existent",
+            summary = "Renvoi la liste des categories par entrprise",
+            responses = {
+                    @ApiResponse(
+                            description = "La liste des categories par entreprise / Une liste vide",
+                            responseCode = "200"
+                    ),
+
+            }
+    )
+    @GetMapping(value = APP_ROOT + "/categories/by-entreprise/{idEntreprise}", produces = MediaType.APPLICATION_JSON_VALUE)
+    List<CategoryDto> findCategoryByEntreprise(@PathVariable("idEntreprise") Integer id );
 
     @Operation(
             description = "Cette methode permet de supprimer une category par ID",

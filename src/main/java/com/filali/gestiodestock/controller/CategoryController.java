@@ -41,6 +41,11 @@ public class CategoryController implements CategoryApi {
     }
 
     @Override
+    public List<CategoryDto> findCategoryByEntreprise(Integer id) {
+        return categoryService.findCategoryByEntreprise(id);
+    }
+
+    @Override
     public void delete(Integer id) {
         categoryService.delete(id);
     }

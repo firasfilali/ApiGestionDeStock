@@ -76,6 +76,17 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
+    public List<CategoryDto> findCategoryByEntreprise(Integer id) {
+        if (id == null) {
+            log.error("Entreprise ID in Category is null");
+            return null;
+        }
+        return categoryRepository.findCategoryByEntreprise(id).stream()
+                .map(CategoryDto::fromEntity)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Integer id) {
         if (id == null) {
             log.error("Category CODE is null");
